@@ -1,7 +1,7 @@
 $(document).ready(pageReady);
 let employeesEntered = [];
-let monthlySalary = 0;
-
+// let monthlyCosts = []; Revist later.
+let monthlyCost = 0;
 
 function pageReady() {
     $('.masterSubmit').on('click', inputCollect); //If we click masterSubmit class, run inputCollect function.  This is getting intuitive!  
@@ -20,6 +20,8 @@ function inputCollect() {
     console.log("Thanks for logging your employee. Here is employeesEntered:", employeesEntered); //Nice.  This works and is super exciting.
     $('this').toggleClass('inputCollector');
     appendEmployee();
+    calcMonthlyCost();
+
 }
 
 
@@ -46,7 +48,15 @@ function appendEmployee() {
     }
 }
 
-function calcMonthlyCost()
+function calcMonthlyCost() {
+    let annualSalaryTotal = 0;
+    for (let i = 0; i < employeesEntered.length; i++) {
+        annualSalaryTotal += employeesEntered[i].annualSalaryEntry << 0; //Adds all of the element annualSalaryEntry at index until for loop iterates through the entire array.
+        let monthlyCost = annualSalaryTotal / 12;
+        console.log("Monthly cost of employees on bankroll:", monthlyCost);
+    }
+    return monthlyCost;
+};
 
 
 
