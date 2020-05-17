@@ -27,7 +27,13 @@ function calculateMonthlyCost() {
 
 function inputCollect() {
     // let firstName = $
-    if ($(".employeeInputFields").val() != '') {//the logic here is correct but we aren't linking the data fields to anything so it's always going to Bork!
+    let firstNameEntry = $('')
+    let lastNameEntry = $('')
+    let iDEntry = $('')
+    let jobTitleEntry = $('')
+    let annualSalaryEntry = $('')
+    
+    if ($(".employeeInputFields").val() != '') { //the logic here is correct but we aren't linking the data fields to anything so it's always going to Bork!
         alert('Bork Bork Bork');
     } else {
         alert('Your data is up to date an accurate');
