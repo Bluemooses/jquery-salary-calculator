@@ -5,7 +5,6 @@ let monthlyCost = 0;
 
 function pageReady() {
     $('.masterSubmit').on('click', inputCollect); //If we click masterSubmit class, run inputCollect function.  This is getting intuitive!  
-    $('#iAppend').on('click', appendEmployee);
     $('#iAppend').on('click', '.deleteBtn', deleteField); //tells us that while targeting iAppend on HTML if deleteBtn gets "click"ed, we run function 
 }
 
@@ -27,7 +26,6 @@ function inputCollect() {
     // inputCollect(' '); //Making sure our value in inputCollect function which stores all of our cool variables which can let us target fun stuff clears out so we can do it again if we want.
 }
 
-
 function appendEmployee() {
     console.log("In appendEmployee");
 
@@ -48,6 +46,7 @@ function appendEmployee() {
         </tr>                                                 //Also creates a delete button to be displayed inline with other appendages. :]
     
         `)
+
     }
 }
 
@@ -69,6 +68,6 @@ function calcMonthlyCost() {
 
 function deleteField() {
     console.log("Doing some deleting, I guess");
-    $('#iAppend').remove();
+    $('this').parent().remove();
     //     console.log('Here I am, trying to delete, I have not written anything else so I expect this just log this overly long piece of text which someone may find comical if they are looking hard enough and also I should have used double-quotes because now I have to spell out every word instead of using contractions.');
 }
