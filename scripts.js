@@ -1,6 +1,7 @@
 $(document).ready(pageReady);
 let employeesEntered = [];
 
+
 function pageReady() {
     $('.masterSubmit').on('click', inputCollect); //If we click masterSubmit class, run inputCollect function.  This is getting intuitive!  
 }
@@ -12,10 +13,12 @@ function inputCollect() {
         iDEntry: $('#iD').val(),
         jobTitleEntry: $('#jobTitle').val(),
         annualSalaryEntry: $('#annualSalary').val()
-
     }
-    employeesEntered.push(employeeUnit);
+    employeesEntered.push(employeeUnit); //we are pushing the employee on click as an object to a new array of objects.
+    console.log("Thanks for logging your employee. Here is employeesEntered:", employeesEntered);//Nice.  This works and is super exciting.
 }
+
+
 //     $('.apenderOoo').children('tbody').append(`<tr>                            
 // <td>${firstNameEntry}</td>   
 // <td>${lastNameEntry}</td>
@@ -26,19 +29,12 @@ function inputCollect() {
 // </tr>`);
 function appendEmployee(employeeUnit) {
 
+}
 
 
 
-
-
-    // if ($(".employeeInputFields").val() == '') { //the logic here is correct but we aren't linking the data fields to anything so it's always going to Bork!
-    //     alert('Bork Bork Bork');
-    // } else {
-    //     alert('Your data is up to date an accurate');
-    // }
 
     //I GOT IT TO WORK!  Nice. :].
     //   console.log("You must fill in all fields before continuing. SpLaT"); //trying to see if we can make a function to return splat if 
     //any of our input fields are empty.
 
-}
