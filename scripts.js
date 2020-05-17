@@ -27,11 +27,11 @@ function calculateMonthlyCost() {
 
 function inputCollect() {
     // let firstName = $
-    let firstNameEntry = $('')
-    let lastNameEntry = $('')
-    let iDEntry = $('')
-    let jobTitleEntry = $('')
-    let annualSalaryEntry = $('')
+    let firstNameEntry = $('#firstName')
+    let lastNameEntry = $('lastName')
+    let iDEntry = $('iDEntry')
+    let jobTitleEntry = $('jobTitleEntry')
+    let annualSalaryEntry = $('annualSalaryEntry')
     
     if ($(".employeeInputFields").val() != '') { //the logic here is correct but we aren't linking the data fields to anything so it's always going to Bork!
         alert('Bork Bork Bork');
