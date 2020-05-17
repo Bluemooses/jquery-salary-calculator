@@ -47,10 +47,15 @@ function appendEmployee() {
 }
 
 function calcMonthlyCost() {
+
     let monthlyLabor = annualLabor / 12;
     // console.log(monthlyLabor); //this logs the proper value from our previous function.  We can now use this data in our helper function to achieve our goals.
-
-
+    if (monthlyLabor >= 20000) {
+        $('.calculatorSalary').addClass("badNewsBears"); //we target our class in <html> calculatorSalary and we tack on the badNewsBears class.  Being in the red is bad! 
+        // console.log("You're overbudget.");
+        alert("As the late Jon Jacklin would have said: You're blowing it!");
+    }
+    console.log("monthlyLabor", monthlyLabor);
 }
 
 
@@ -104,6 +109,7 @@ function calcMonthlyCost() {
 
 function deleteField() {
     console.log("Doing some deleting, I guess"); //this was at 3a.m., whoops.
-    $(this).closest('tr').remove(); //a very clean, efficient solution to removing THIS button (which we can see in the ELEMENTS TAB) and the items on the tree closest to it.  Which would be our NEWLY CREATED employee.
+    $(this).closest('tr').remove();
+    $() //a very clean, efficient solution to removing THIS button (which we can see in the ELEMENTS TAB) and the items on the tree closest to it.  Which would be our NEWLY CREATED employee.
     //     console.log('Here I am, trying to delete, I have not written anything else so I expect this just log this overly long piece of text which someone may find comical if they are looking hard enough and also I should have used double-quotes because now I have to spell out every word instead of using contractions.');
 }
