@@ -6,7 +6,7 @@ let monthlyCost = 0;
 function pageReady() {
     $('.masterSubmit').on('click', inputCollect); //If we click masterSubmit class, run inputCollect function.  This is getting intuitive!  
     $('#iAppend').on('click', appendEmployee);
-    // $('deleteBtn').on('click', deleteField);
+    $('#iAppend').on('click', '.deleteBtn', deleteField); //tells us that while targeting iAppend on HTML if deleteBtn gets "click"ed, we run function 
 }
 
 function inputCollect() {
@@ -44,7 +44,7 @@ function appendEmployee() {
             <td>${employeesEntered[i].iDEntry}</td>  
             <td>${employeesEntered[i].jobTitleEntry}</td>
             <td>${employeesEntered[i].annualSalaryEntry}</td>
-            <td><button id = "deleteBtn">Delete</button></td> //APPENDS our variables ^ to their respective fields
+            <td><button class = "deleteBtn">Delete</button></td> //APPENDS our variables ^ to their respective fields
         </tr>                                                 //Also creates a delete button to be displayed inline with other appendages. :]
     
         `)
@@ -68,5 +68,7 @@ function calcMonthlyCost() {
 };
 
 function deleteField() {
-    $(this).parent().remove(); //     console.log('Here I am, trying to delete, I have not written anything else so I expect this just log this overly long piece of text which someone may find comical if they are looking hard enough and also I should have used double-quotes because now I have to spell out every word instead of using contractions.');
+    console.log("Doing some deleting, I guess");
+    $('#iAppend').remove();
+    //     console.log('Here I am, trying to delete, I have not written anything else so I expect this just log this overly long piece of text which someone may find comical if they are looking hard enough and also I should have used double-quotes because now I have to spell out every word instead of using contractions.');
 }
