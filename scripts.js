@@ -19,7 +19,6 @@ function inputCollect() {
     employeesEntered.push(employeeUnit); //we are pushing the employee on click as an object to a new array of objects.
     console.log("Thanks for logging your employee. Here is employeesEntered:", employeesEntered); //Nice.  This works and is super exciting.
     // $('this').toggleClass(inputCollector);
-    // $('#iAppend').empty(); //Nice this is super handy because we basically said look, I have this information on the DOM, if you want to use it in any efficient fashion you need to only look at one instance at a time.  How do we do that?  By emptying the datafields and only accessing the instance the button is clicked and the fields are full:]
     appendEmployee(); //running our really cool appendEmployee function.
 }
 
@@ -56,14 +55,18 @@ function calcMonthlyCost() {
         alert("As the late Jon Jacklin would have said: You're blowing it!"); //He was the GM of Smack Shack and a very nice person!  He took a chance on me when I wasn't sure if I would get one.  I have much gratitude for that man & continued support & love from the Shack Family :].
     }
     // console.log("monthlyLabor", monthlyLabor); //functions as intended.
-    $('.inlineCalculatorSalary').append(monthlyLabor); //appending the monthlyLabor to DOM inline with the calculatorSalary.
+    $('.inlineCalculatorSalary').append(Math.round(monthlyLabor)); //appending the monthlyLabor to DOM inline with the calculatorSalary. I thought it would be nice to round.
+}
+
+function deleteField() {
+    // console.log("Doing some deleting, I guess"); //this was at 3a.m., whoops.
+    $(this).closest('tr').remove(); //a very clean, efficient solution to removing THIS button (which we can see in the ELEMENTS TAB) and the items on the tree closest to it.  Which would be our NEWLY CREATED employee.
 }
 
 
 
 
-
-
+///////////////////////////////////////////////////Scrap work
 
 
 
@@ -100,17 +103,3 @@ function calcMonthlyCost() {
 
 //     }
 // }
-
-
-
-
-
-///////////////////////////////////////////////That works so stay down there.
-
-
-function deleteField() {
-    console.log("Doing some deleting, I guess"); //this was at 3a.m., whoops.
-    $(this).closest('tr').remove();
-    $() //a very clean, efficient solution to removing THIS button (which we can see in the ELEMENTS TAB) and the items on the tree closest to it.  Which would be our NEWLY CREATED employee.
-    //     console.log('Here I am, trying to delete, I have not written anything else so I expect this just log this overly long piece of text which someone may find comical if they are looking hard enough and also I should have used double-quotes because now I have to spell out every word instead of using contractions.');
-}
