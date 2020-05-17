@@ -1,5 +1,6 @@
 $(document).ready(pageReady);
 let employeesEntered = [];
+let monthlySalary = 0;
 
 
 function pageReady() {
@@ -44,6 +45,8 @@ function appendEmployee() {
         `)
     }
 }
+
+function calcMonthlyCost()
 
 
 
