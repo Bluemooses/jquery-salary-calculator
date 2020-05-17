@@ -56,7 +56,7 @@ function calcMonthlyCost() {
         alert("As the late Jon Jacklin would have said: You're blowing it!"); //He was the GM of Smack Shack and a very nice person!  He took a chance on me when I wasn't sure if I would get one.  I have much gratitude for that man & continued support & love from the Shack Family :].
     }
     // console.log("monthlyLabor", monthlyLabor); //functions as intended.
-    $('.inlineCalculatorSalary').append('monthlyLabor'); //appending the monthlyLabor to DOM inline with the calculatorSalary.
+    $('.inlineCalculatorSalary').append(monthlyLabor); //appending the monthlyLabor to DOM inline with the calculatorSalary.
 }
 
 
