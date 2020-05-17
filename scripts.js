@@ -1,46 +1,31 @@
 $(document).ready(pageReady);
-
+let employeesEntered = [];
 
 function pageReady() {
     $('.masterSubmit').on('click', inputCollect); //If we click masterSubmit class, run inputCollect function.  This is getting intuitive!  
-
-
-
-
-
-
-
-
-
-
-
-    // alert("jQuery init");
-    // console.log("We are in jQuery");
-
-
-
-}
-
-function calculateMonthlyCost() {
-
 }
 
 function inputCollect() {
+    let employeeUnit = {
+        firstNameEntry: $('#firstName').val(), //these variables will allow us to acces our input.
+        lastNameEntry: $('#lastName').val(),
+        iDEntry: $('#iD').val(),
+        jobTitleEntry: $('#jobTitle').val(),
+        annualSalaryEntry: $('#annualSalary').val()
 
-    let firstNameEntry = $('#firstName').val(); //these variables will allow us to acces our input.
-    let lastNameEntry = $('#lastName').val();
-    let iDEntry = $('#iD').val();
-    let jobTitleEntry = $('#jobTitle').val();
-    let annualSalaryEntry = $('#annualSalary').val();
+    }
+    employeesEntered.push(employeeUnit);
+}
+//     $('.apenderOoo').children('tbody').append(`<tr>                            
+// <td>${firstNameEntry}</td>   
+// <td>${lastNameEntry}</td>
+// <td>${iDEntry}</td>
+// <td>${jobTitleEntry}</td>
+// <td>${annualSalaryEntry}</td>
+// <td><button class = "delete" >Delete</button></td>    
+// </tr>`);
+function appendEmployee(employeeUnit) {
 
-    $('.apenderOoo').children('tbody').append(`<tr>                            
-<td>${firstNameEntry}</td>   
-<td>${lastNameEntry}</td>
-<td>${iDEntry}</td>
-<td>${jobTitleEntry}</td>
-<td>${annualSalaryEntry}</td>
-<td><button class = "delete" >Delete</button></td>    
-</tr>`);
 
 
 
