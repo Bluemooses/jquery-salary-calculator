@@ -18,7 +18,7 @@ function inputCollect() {
     }
     employeesEntered.push(employeeUnit); //we are pushing the employee on click as an object to a new array of objects.
     console.log("Thanks for logging your employee. Here is employeesEntered:", employeesEntered); //Nice.  This works and is super exciting.
-    $('this').toggleClass('inputCollector');
+    // $('this').toggleClass(inputCollector);
     appendEmployee();
     calcMonthlyCost();
 
@@ -41,8 +41,8 @@ function appendEmployee() {
             <td>${employeesEntered[i].iDEntry}</td>  
             <td>${employeesEntered[i].jobTitleEntry}</td>
             <td>${employeesEntered[i].annualSalaryEntry}</td>
-           
-        </tr>
+            <td><button id = "deleteBtn">Delete</button></td> //APPENDS our variables ^ to their respective fields
+        </tr>                                                 //Also creates a delete button to be displayed inline with other appendages. :]
     
         `)
     }
@@ -54,13 +54,18 @@ function calcMonthlyCost() {
         annualSalaryTotal += employeesEntered[i].annualSalaryEntry << 0; //Adds all of the element annualSalaryEntry at index until for loop iterates through the entire array.
         let monthlyCost = annualSalaryTotal / 12;
         console.log("Monthly cost of employees on bankroll:", monthlyCost);
+        if (monthlyCost > 20000) {
+            $('.calculatorSalary').css("background-color", "red"); //this is a really good example of making sure you know what you're targeting.
+            console.log("You are spending far too much money", monthlyCost) //I tried a bunch to get it to target a # instead of a class.  Which just made for a bad time.
+            return monthlyCost;
+        } else {
+            return monthlyCost;
+        }
     }
-    return monthlyCost;
 };
 
+function deleteField() {
 
+}
 
-
-// function calculateMonthlyCosts(employeeUnit) {
-
-// }
+// 
