@@ -6,9 +6,11 @@ let monthlyCost = 0;
 function pageReady() {
     $('.masterSubmit').on('click', inputCollect); //If we click masterSubmit class, run inputCollect function.  This is getting intuitive!  
     $('#iAppend').on('click', appendEmployee);
+    // $('deleteBtn').on('click', deleteField);
 }
 
 function inputCollect() {
+    $('#iAppend').empty(); //Nice this is super handy because we basically said look, I have this information on the DOM, if you want to use it in any efficient fashion you need to only look at one instance at a time.  How do we do that?  By emptying the datafields and only accessing the instance the button is clicked and the fields are full:]
     let employeeUnit = { //An employee object.
         firstNameEntry: $('#firstName').val(), //these variables will allow us to acces our input.
         lastNameEntry: $('#lastName').val(),
@@ -22,6 +24,7 @@ function inputCollect() {
     appendEmployee();
     calcMonthlyCost();
 
+    // inputCollect(' '); //Making sure our value in inputCollect function which stores all of our cool variables which can let us target fun stuff clears out so we can do it again if we want.
 }
 
 
@@ -65,7 +68,5 @@ function calcMonthlyCost() {
 };
 
 function deleteField() {
-
+    $(this).parent().remove(); //     console.log('Here I am, trying to delete, I have not written anything else so I expect this just log this overly long piece of text which someone may find comical if they are looking hard enough and also I should have used double-quotes because now I have to spell out every word instead of using contractions.');
 }
-
-// 
