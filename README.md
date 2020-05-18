@@ -1,9 +1,15 @@
 # Project Name
+jQuery-salary-calculator
+# Goal
+Store and log employee information.
+Calculate monthly salaries combined.
+Send a warning if overbudget.
+Target DOM with jQuery.
+Eloquent Javascript practice.
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+# Feelings
+I am enjoying the learning process and undergoing the process of thinking like a developer.
+Of note in this assignment is the importance of breaking a problem down by the logical problems we may have and in what order those things need to get accomplished.
+If we try to do everything at once, it's a recipe to just get the ring around.  
+It's important to take the small victories and recognize that with more practice the complex syntax will come more naturally.
 
-## Description
-
-Your project description goes here. What problem did you solve? How did you solve it?
-
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).

@@ -10,12 +10,9 @@ class Employee { //after complete base goals am striving for more efficiency whi
     }
 }
 
-
-
-
 function pageReady() {
     $('.masterSubmit').on('click', inputCollect); //If we click masterSubmit class, run inputCollect function.  This is getting intuitive!  
-    $('#iAppend').on('click', '.deleteBtn', deleteField); //tells us that while targeting iAppend id if deleteBtn gets "click"ed, we run function 
+    $('.gulliverMcFuzzBottom').on('click', '#deleteBtn', deleteField); //tells us that while targeting iAppend id if deleteBtn gets "click"ed, we run function 
 };
 
 function inputCollect() {
@@ -45,7 +42,7 @@ function appendEmployee() {
         $('#iAppend').append(`<tr>
         <td>${employeesEntered[i].firstName}</td>
         <td>${employeesEntered[i].lastName}</td>
-        <td>${employeesEntered[i].iD}</td>
+        <td id ="theId">${employeesEntered[i].iD}</td>
         <td>${employeesEntered[i].jobTitle}</td>
         <td>$${parseInt(employeesEntered[i].annualSalary).toLocaleString()}</td> 
         <td><button id = "deleteBtn">Delete</button></td>
@@ -89,13 +86,14 @@ function clearValues() { //playing with functionality and ease of accessibility.
 }
 
 function deleteField() {
-
-    // console.log("Doing some deleting, I guess"); //this was at 3a.m., whoops.
-    //I need to remove the same line as the button while also subtracting the data from our employee array. 
-
-    $(this).closest('tr').remove(); //a very clean, efficient solution to removing THIS button (which we can see in the ELEMENTS TAB) and the items on the tree closest to it.  Which would be our NEWLY CREATED employee.
-
+    let getTheId = Number($('this').attr('class'));
+    employeesEntered.splice(getTheId, 1);
+    $(this).closest('tr').remove();
 }
+
+
+
+
 
 
 
@@ -168,3 +166,18 @@ function deleteField() {
 
 
 // calcCostHelper(); artifact of old ideas.
+// // console.log("Doing some deleting, I guess"); //this was at 3a.m., whoops.
+// //I need to remove the same line as the button while also subtracting the data from our employee array. 
+// let getTheId = $(this).closest('tr').find('#theId').text();
+// // console.log(getTheId);
+
+// for (let i = 0; i < employeesEntered.length; i++) {
+//     if (getTheId.includes(employeesEntered[i].iD)) {
+//         // console.log("Check 1, 2");
+//         employeesEntered.splice(i, 1);
+//         $(this).closest('tr').remove(); //a very clean, efficient solution to removing THIS button (which we can see in the ELEMENTS TAB) and the items on the tree closest to it.  Which would be our NEWLY CREATED employee.
+//         laborOnAnnum();
+//         return;
+//     }
+
+// }
