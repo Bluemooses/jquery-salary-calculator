@@ -89,6 +89,9 @@ function deleteField() {
     let getTheId = Number($('this').attr('class'));
     employeesEntered.splice(getTheId, 1);
     $(this).closest('tr').remove();
+    appendEmployee();
+    laborOnAnnum();
+
 }
 
 
