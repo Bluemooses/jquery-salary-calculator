@@ -1,7 +1,16 @@
 $(document).ready(pageReady);
+class Employee { //after complete base goals am striving for more efficiency while using a constructor function.
+    constructor(firstName, lastName, iD, jobTitle, annualSalary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.iD = iD;
+        this.jobTitle = jobTitle;
+        this.annualSalary = annualSalary;
+    }
+}
+
 let employeesEntered = [];
 let annualLabor = 0;
-
 
 function pageReady() {
     $('.masterSubmit').on('click', inputCollect); //If we click masterSubmit class, run inputCollect function.  This is getting intuitive!  
@@ -9,60 +18,83 @@ function pageReady() {
 };
 
 function inputCollect() {
-    let employeeUnit = { //An employee object.
-        firstNameEntry: $('#firstName').val(), //these variables will allow us to acces our input.
-        lastNameEntry: $('#lastName').val(),
-        iDEntry: $('#iD').val(),
-        jobTitleEntry: $('#jobTitle').val(),
-        annualSalaryEntry: $('#annualSalary').val()
-    };
-    employeesEntered.push(employeeUnit); //we are pushing the employee on click as an object to a new array of objects.
-    console.log("Thanks for logging your employee. Here is employeesEntered:", employeesEntered); //Nice.  This works and is super exciting.
+
+    let firstName = $('#firstName').val(); //these variables will allow us to acces our input.
+    let lastName = $('#lastName').val();
+    let iD = $('#iD').val();
+    let jobTitle = $('#jobTitle').val();
+    let annualSalary = $('#annualSalary').val();
+    let employeeInput = new Employee(firstName, lastName, iD, jobTitle, annualSalary); //creates a NEW class EMPLOYEE with 5 different params which we linked to the dom ^ above.
+
+    employeesEntered.push(employeeInput); //now we push our variable employeeInput which tells our constructor function to print a new Employee for us to use.
+    // console.log("Thanks for logging your employee. Here is employeesEntered:", employeesEntered); //Nice.  This works and is super exciting.
     // $('this').toggleClass(inputCollector);
+    // console.log(employeesEntered); //I can see we successfully printed our DOM, now we need to work on functionality to apppend.
+    clearValues();
+    calcMonthlyCost();
     appendEmployee(); //running our really cool appendEmployee function.
+
 }
 
 function appendEmployee() {
-    // console.log("In appendEmployee");
-    $('#iAppend').empty();
-    annualLabor = 0;
-    for (let i = 0; i < employeesEntered.length; i++) {
-        annualLabor += Number(employeesEntered[i].annualSalaryEntry);
-        // console.log('annualLabor', annualLabor); //Functions as intended.
-
-        $('#iAppend').append(`
-        <tr>  
-            <td>${employeesEntered[i].firstNameEntry}</td>
-            <td>${employeesEntered[i].lastNameEntry}</td>
-            <td>${employeesEntered[i].iDEntry}</td>  
-            <td>${employeesEntered[i].jobTitleEntry}</td>
-            <td>${employeesEntered[i].annualSalaryEntry}</td>
-            <td><button class = "deleteBtn">Delete</button></td> //APPENDS our variables ^ to their respective fields
-        </tr>                                                 //Also creates a delete button to be displayed inline with other appendages. :]
-    
-        `);
+    // console.log("In appendEmployee"); //I just wanted to create a function to handle each step of the logic only.
+    $('#iAppend').empty(); //emptying so we don't get 1+1+2+3+5+8+...;
+    for (i = 0; i < employeesEntered.length; i++) {
+        // console.log("in for loop");
+        $('#iAppend').append(`<tr>
+        <td>${employeesEntered[i].firstName}</td>
+        <td>${employeesEntered[i].lastName}</td>
+        <td>${employeesEntered[i].iD}</td>
+        <td>${employeesEntered[i].jobTitle}</td>
+        <td>$$$${parseInt(employeesEntered[i].annualSalary).toLocaleString()}</td>
+        <td><button id = "deleteBtn">Delete</button></td>
+        </tr>`);
     }
-    calcMonthlyCost(); //calling our new function calcMonthlyCost which we will use to help us put an inline "counter" on monthlyLabor
+
 }
 
 function calcMonthlyCost() {
 
-    let monthlyLabor = annualLabor / 12;
-    // console.log(monthlyLabor); //this logs the proper value from our previous function.  We can now use this data in our helper function to achieve our goals.
-    if (monthlyLabor >= 20000) {
-        $('.calculatorSalary').addClass("badNewsBears"); //we target our class in <html> calculatorSalary and we tack on the badNewsBears class.  Being in the red is bad! 
-        // console.log("You're overbudget.");
-        alert("As the late Jon Jacklin would have said: You're blowing it!"); //He was the GM of Smack Shack and a very nice person!  He took a chance on me when I wasn't sure if I would get one.  I have much gratitude for that man & continued support & love from the Shack Family :].
-    }
-    // console.log("monthlyLabor", monthlyLabor); //functions as intended.
-    $('.inlineCalculatorSalary').append(Math.round(monthlyLabor)); //appending the monthlyLabor to DOM inline with the calculatorSalary. I thought it would be nice to round.
+
+}
+
+
+
+// function calcMonthlyCost() {
+//     annualLabor = 0;
+//     for (let i = 0; i < employeesEntered.length; i++) {
+//         annualLabor += Number(employeesEntered[i].annualSalaryEntry);
+//     } // console.log('annualLabor', annualLabor); //Functions as intended.
+
+//     $('.inlineCalculatorSalary').empty();
+
+//     let monthlyLabor = annualLabor / 12;
+//     // console.log(monthlyLabor); //this logs the proper value from our previous function.  We can now use this data in our helper function to achieve our goals.
+//     if (monthlyLabor >= 20000) {
+//         $('.calculatorSalary').addClass("badNewsBears");
+//         // console.log("You're overbudget.");
+//         alert("As the late Jon Jacklin would have said: You're blowing it!"); //He was the GM of Smack Shack and a very nice person!  He took a chance on me when I wasn't sure if I would get one.  I have much gratitude for that man & continued support & love from the Shack Family :].
+//     }
+//     // console.log("monthlyLabor", monthlyLabor); //functions as intended.
+
+
+
+function clearValues() {
+    $('#firstName').val('');
+    $('#lastName').val('');
+    $('#iD').val('');
+    $('#jobTitle').val('');
+    $('#annualSalary').val('');
 }
 
 function deleteField() {
-    // console.log("Doing some deleting, I guess"); //this was at 3a.m., whoops.
-    $(this).closest('tr').remove(); //a very clean, efficient solution to removing THIS button (which we can see in the ELEMENTS TAB) and the items on the tree closest to it.  Which would be our NEWLY CREATED employee.
-}
 
+    // console.log("Doing some deleting, I guess"); //this was at 3a.m., whoops.
+    //I need to remove the same line as the button while also subtracting the data from our employee array. 
+
+    $(this).closest('tr').remove(); //a very clean, efficient solution to removing THIS button (which we can see in the ELEMENTS TAB) and the items on the tree closest to it.  Which would be our NEWLY CREATED employee.
+
+}
 
 
 
