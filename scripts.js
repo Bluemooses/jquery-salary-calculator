@@ -1,3 +1,4 @@
+let employeesEntered = [];
 $(document).ready(pageReady);
 class Employee { //after complete base goals am striving for more efficiency while using a constructor function.
     constructor(firstName, lastName, iD, jobTitle, annualSalary) {
@@ -9,7 +10,7 @@ class Employee { //after complete base goals am striving for more efficiency whi
     }
 }
 
-let employeesEntered = [];
+
 
 
 function pageReady() {
@@ -18,7 +19,7 @@ function pageReady() {
 };
 
 function inputCollect() {
-
+    event.preventDefault();
     let firstName = $('#firstName').val(); //these variables will allow us to acces our input.
     let lastName = $('#lastName').val();
     let iD = $('#iD').val();
@@ -46,7 +47,7 @@ function appendEmployee() {
         <td>${employeesEntered[i].lastName}</td>
         <td>${employeesEntered[i].iD}</td>
         <td>${employeesEntered[i].jobTitle}</td>
-        <td>$$$${parseInt(employeesEntered[i].annualSalary).toLocaleString()}</td> 
+        <td>$${parseInt(employeesEntered[i].annualSalary).toLocaleString()}</td> 
         <td><button id = "deleteBtn">Delete</button></td>
         </tr>`);
     } //added inline parseInt on the annualSalary for entire array.
@@ -55,13 +56,29 @@ function appendEmployee() {
 
 function laborOnAnnum() {
     let annualLabor = 0;
-    let salary; //salary exists, and in this case we assign it to look through our array and parse the Int of our constructed EMPLOYEE 
-    for (let i = 0; i < employeesEntered[i].length; i++) { //here we say the 1st iteration, it's just salary because annualLabor is 0.  The next time we run this function, it will add our new annualLabor of (salary) giving us a value that persists and adds up through the array.
+    let salary;
+
+    for (let i = 0; i < employeesEntered.length; i++) {
         salary = parseInt(employeesEntered[i].annualSalary);
         annualLabor = annualLabor + salary;
     }
-}
+    monthlyLabor = (annualLabor / 12).toFixed(2);
+    monthlyOutput = parseFloat(monthlyLabor).toLocaleString(undefined, {
+        'minimumFractionDigits': 2,
+        'maximumFractionDigits': 2
+    })
 
+    let costPerMonth = $('.costPerMonth');
+    costPerMonth.empty();
+    costPerMonth.append(`<h2>Total: $${monthlyOutput}</h2`);
+
+    console.log(monthlyLabor);
+    if (monthlyLabor >= 20000) {
+        costPerMonth.addClass('badNewsBears');
+    } else {
+        costPerMonth.removeClass('badNewsBears');
+    }
+}
 
 function clearValues() { //playing with functionality and ease of accessibility.
     $('#firstName').val('');
@@ -119,3 +136,35 @@ function deleteField() {
 
 //     }
 // }
+// function laborOnAnnum() {
+//     let annualLabor = 0;
+//     let salary; //salary exists, and in this case we assign it to look through our array and parse the Int of our constructed EMPLOYEE 
+//     for (let i = 0; i < employeesEntered[i].length; i++) { //here we say the 1st iteration, it's just salary because annualLabor is 0.  The next time we run this function, it will add our new annualLabor of (salary) giving us a value that persists and adds up through the array.
+//         salary = parseInt(employeesEntered[i].annualSalary);
+//         annualLabor = annualLabor + salary;
+//     }
+//     monthlyLabor = Math.round(annualLabor / 12); //using my MATH skills
+//     monthlyOutput = parseFloat(monthlyLabor).toLocaleString(undefined, { //floating monthlyLabor to be accesed through monthlyOutput. 
+//         'minimumFractionDigits': 0,
+//         'maximumFractionDigits': 0
+//     });
+//     let costPerMonth = $('.inlineCalculatorSalary');
+//     costPerMonth.empty(); //If we don't empty here it will Add the previous values as well as the input value.
+//     costPerMonth.append(`<h2>Spent this month: $${monthlyOutput}</h2>`);
+
+//     console.log("costPerMonth", costPerMonth);
+
+// }
+
+
+// function calcMonthlyCost() {
+//     let annualLabor = 0;
+//     let monthlyLabor = annualLabor / 12;
+//     $('.inlineCalculatorSalary').text(monthlyLabor);
+//     // console.log('annualLabor'); //functions as intended.
+//     if (monthlyLabor >= 20000) {
+//         $('.calculatorSalary').css("background-color", "red"); //this visual alert works so I am commenting out my alert for debugging.
+//     } // alert("Caution, monthly cost is out of this world!", monthlyLabor);            
+
+
+// calcCostHelper(); artifact of old ideas.
