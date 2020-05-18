@@ -90,8 +90,8 @@ function deleteField() {
     employeesEntered.splice(getTheId, 1);
     $(this).closest('tr').remove();
     appendEmployee(); //calls the 
-    laborOnAnnum(); //functions to reiterate after we remove the closest html element tr to our delete button (in this case the appended employee). 
-    //this allows us to recalculate the monthlySalary with a newly created set of data when we click the delete button.
+    laborOnAnnum();   //functions to reiterate after we remove the closest html element tr to our delete button (in this case the appended employee). 
+                    //this allows us to recalculate the monthlySalary with a newly created set of data when we click the delete button.
 }
 
 
