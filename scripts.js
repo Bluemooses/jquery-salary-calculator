@@ -10,7 +10,7 @@ class Employee { //after complete base goals am striving for more efficiency whi
 }
 
 let employeesEntered = [];
-let annualLabor = 0;
+
 
 function pageReady() {
     $('.masterSubmit').on('click', inputCollect); //If we click masterSubmit class, run inputCollect function.  This is getting intuitive!  
@@ -31,7 +31,7 @@ function inputCollect() {
     // $('this').toggleClass(inputCollector);
     // console.log(employeesEntered); //I can see we successfully printed our DOM, now we need to work on functionality to apppend.
     clearValues();
-    calcMonthlyCost();
+    laborOnAnnum();
     appendEmployee(); //running our really cool appendEmployee function.
 
 }
@@ -46,40 +46,24 @@ function appendEmployee() {
         <td>${employeesEntered[i].lastName}</td>
         <td>${employeesEntered[i].iD}</td>
         <td>${employeesEntered[i].jobTitle}</td>
-        <td>$$$${parseInt(employeesEntered[i].annualSalary).toLocaleString()}</td>
+        <td>$$$${parseInt(employeesEntered[i].annualSalary).toLocaleString()}</td> 
         <td><button id = "deleteBtn">Delete</button></td>
         </tr>`);
+    } //added inline parseInt on the annualSalary for entire array.
+
+}
+
+function laborOnAnnum() {
+    let annualLabor = 0;
+    let salary; //salary exists, and in this case we assign it to look through our array and parse the Int of our constructed EMPLOYEE 
+    for (let i = 0; i < employeesEntered[i].length; i++) { //here we say the 1st iteration, it's just salary because annualLabor is 0.  The next time we run this function, it will add our new annualLabor of (salary) giving us a value that persists and adds up through the array.
+        salary = parseInt(employeesEntered[i].annualSalary);
+        annualLabor = annualLabor + salary;
     }
-
-}
-
-function calcMonthlyCost() {
-
-
 }
 
 
-
-// function calcMonthlyCost() {
-//     annualLabor = 0;
-//     for (let i = 0; i < employeesEntered.length; i++) {
-//         annualLabor += Number(employeesEntered[i].annualSalaryEntry);
-//     } // console.log('annualLabor', annualLabor); //Functions as intended.
-
-//     $('.inlineCalculatorSalary').empty();
-
-//     let monthlyLabor = annualLabor / 12;
-//     // console.log(monthlyLabor); //this logs the proper value from our previous function.  We can now use this data in our helper function to achieve our goals.
-//     if (monthlyLabor >= 20000) {
-//         $('.calculatorSalary').addClass("badNewsBears");
-//         // console.log("You're overbudget.");
-//         alert("As the late Jon Jacklin would have said: You're blowing it!"); //He was the GM of Smack Shack and a very nice person!  He took a chance on me when I wasn't sure if I would get one.  I have much gratitude for that man & continued support & love from the Shack Family :].
-//     }
-//     // console.log("monthlyLabor", monthlyLabor); //functions as intended.
-
-
-
-function clearValues() {
+function clearValues() { //playing with functionality and ease of accessibility.
     $('#firstName').val('');
     $('#lastName').val('');
     $('#iD').val('');
