@@ -12,7 +12,7 @@ class Employee { //after complete base goals am striving for more efficiency whi
 
 function pageReady() {
     $('.masterSubmit').on('click', inputCollect); //If we click masterSubmit class, run inputCollect function.  This is getting intuitive!  
-    $('.gulliverMcFuzzBottom').on('click', '#deleteBtn', deleteField); //tells us that while targeting iAppend id if deleteBtn gets "click"ed, we run function 
+    $('.gulliverMcFuzzBottom').on('click', '#deleteBtn', deleteField); //tells us that while targeting gulliverMcFuzzBottom id if deleteBtn gets "click"ed, we run function 
 };
 
 function inputCollect() {
